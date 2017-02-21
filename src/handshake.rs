@@ -410,11 +410,11 @@ impl Response {
 
     /// Creates a new handshake response. In almost all cases, you probably want to use
     /// `from_request` instead.
-    pub fn new(status: u16, reason: String, headers: Vec<(String, Vec<u8>)>) -> Response {
+    pub fn new() -> Response {
         Response {
-            status: status,
-            reason: reason,
-            headers: headers,
+            status: 500,
+            reason: "".to_string(),
+            headers: Vec::new(),
         }
     }
 
