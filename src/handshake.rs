@@ -408,6 +408,16 @@ pub struct Response {
 impl Response {
     // TODO: resolve the overlap with Request
 
+    /// Creates a new handshake response. In almost all cases, you probably want to use
+    /// `from_request` instead.
+    pub fn new(status: u16, reason: String, headers: Vec<(String, Vec<u8>)>) -> Response {
+        Response {
+            status: status,
+            reason: reason,
+            headers: headers,
+        }
+    }
+
     /// Get the value of the first instance of an HTTP header.
     fn header(&self, header: &str) -> Option<&Vec<u8>> {
         self.headers
